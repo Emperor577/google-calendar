@@ -1,0 +1,25 @@
+<div class="action-wrapper">
+  <div class="action-header">
+    <span>{{ selectedDate | date: 'EEE' }}</span>
+    <span>{{ selectedDate | date: 'd' }}</span>
+  </div>
+  <div class="action-body">
+    <div class="timeslots-wrapper">
+      <ul class="timeslot">
+        <ng-container *ngFor="let time of times">
+          <li class="slot">
+            <div class="time">
+              <span>{{ time }}</span>
+            </div>
+            <div class="time-action-field" (click)="openDialog(time)" [ngClass]="{'selected': isDialogOpen && selectedTime === time, 'booked-slot': isSlotBooked(time)}">
+              <ng-container *ngIf="isSlotBooked(time)">
+                <span>{{ getEvent(time).title }}</span>
+                <span>{{ getTimeRange(time) }}</span>
+              </ng-container>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</div>

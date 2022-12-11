@@ -1,0 +1,48 @@
+<div mat-dialog-content class="dialog-wrapper">
+  <button mat-mini-fab color="warn" class="delete" (click)="removeEvent()">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <h1>Create Event</h1>
+  <mat-form-field appearance="fill">
+    <mat-label>Add Title</mat-label>
+    <input matInput [(ngModel)]="data.title">
+  </mat-form-field>
+  <div class="date-time-wrapper">
+    <span>{{ data.date | date: 'EEEE, MMMM d' }} &nbsp; &nbsp;&nbsp;&nbsp;{{ getTimeRange() }}</span>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="data.date">
+      <mat-datepicker-toggle matSuffix  [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Time</mat-label>
+      <mat-select [(ngModel)]="data.time">
+        <mat-option *ngFor="let timeItem of times" [value]="timeItem">
+          {{timeItem}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <mat-form-field class="example-chip-list" appearance="fill">
+    <mat-label>Add Participants</mat-label>
+    <mat-chip-list #chipList aria-label="Fruit selection">
+      <mat-chip *ngFor="let participant of data.participants" (removed)="remove(participant)">
+        {{participant}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input placeholder="Participant name..."
+             [matChipInputFor]="chipList"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             [matChipInputAddOnBlur]="addOnBlur"
+             (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Create</button>
+</div>

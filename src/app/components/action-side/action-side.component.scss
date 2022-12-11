@@ -1,0 +1,106 @@
+.action-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  .action-header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    span {
+      &:first-child {
+        text-transform: uppercase;
+        color: #999;
+        letter-spacing: 1.5px;
+      }
+      &:last-child {
+        font-size: 18px;
+        font-weight: 700;
+        margin-left: 5px;
+      }
+    }
+  }
+  .action-body {
+    width: 100%;
+    height: calc(100% - 80px);
+    overflow: hidden;
+    position: relative;
+    display: block;
+    .timeslots-wrapper {
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+      display: block;
+      max-height: 100%;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #ddd;
+        border-radius: 10px;
+      }
+      .timeslot {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        height: max-content;
+        width: 100%;
+        .slot {
+          height: 50px;
+          width: 100%;
+          display: flex;
+          position: relative;
+          &:first-child {
+            .time {
+              span {
+                visibility: hidden;
+              }
+            }
+          }
+          .time {
+            width: 50px;
+            height: 100%;
+            border-right: 1px solid rgba(0,0,0,0.3);
+            span {
+              position: relative;
+              top: -9px;
+            }
+          }
+          .time-action-field {
+            border-top: 1px solid rgba(0,0,0,0.3);
+            height: 100%;
+            width: calc(100% - 50px);
+            cursor: pointer;
+          }
+          .booked-slot {
+            background-color: rgb(3, 155, 229);
+            border-color: rgb(3, 155, 229);
+            box-shadow: 1px 1px 15px -5px rgb(0 0 0 / 30%);
+            width: 95%;
+            border-radius: 5px;
+            margin: 0 auto;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 0 10px 0 10px;
+          }
+          .selected {
+            background-color: rgb(3, 155, 229);
+            border-color: rgb(3, 155, 229);
+            box-shadow: 1px 1px 15px -5px rgb(0 0 0 / 30%);
+            width: 95%;
+            border-radius: 10px;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}

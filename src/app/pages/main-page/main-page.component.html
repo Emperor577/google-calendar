@@ -1,0 +1,7 @@
+<div class="main">
+  <app-header></app-header>
+  <div class="content">
+    <app-calendar (dateChangeNotifier)="onDateChange($event)" [selectedDate]="selectedDate"></app-calendar>
+    <app-action-side [selectedDate]="selectedDate"></app-action-side>
+  </div>
+</div>
